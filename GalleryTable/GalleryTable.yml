@@ -1,0 +1,291 @@
+- cntTable_T:
+    Control: GroupContainer
+    Variant: verticalAutoLayoutContainer
+    Properties:
+      AlignInContainer: =AlignInContainer.SetByContainer
+      Fill: =Color.White
+      Height: =355
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutMode: =LayoutMode.Auto
+      Width: =906
+      X: =65
+      Y: =140
+    Children:
+    - cntTableHeader_T:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          AlignInContainer: =AlignInContainer.SetByContainer
+          DropShadow: =DropShadow.Semilight
+          FillPortions: =0
+          Height: =50
+          LayoutAlignItems: =LayoutAlignItems.Stretch
+          LayoutMode: =LayoutMode.Auto
+          PaddingBottom: =5
+          PaddingLeft: =5
+          PaddingRight: =10
+          PaddingTop: =5
+          RadiusBottomLeft: =0
+          RadiusBottomRight: =0
+        Children:
+        - ctnTableHeaderSelection_T:
+            Control: GroupContainer
+            Variant: horizontalAutoLayoutContainer
+            Properties:
+              AlignInContainer: =AlignInContainer.SetByContainer
+              DropShadow: =DropShadow.None
+              FillPortions: =0
+              LayoutAlignItems: =LayoutAlignItems.Stretch
+              LayoutMinHeight: =10
+              LayoutMode: =LayoutMode.Auto
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+              Width: =40
+            Children:
+            - chkTableHeader_T:
+                Control: CheckBox
+                Properties:
+                  OnCheck: =ClearCollect(colSelectedItems,ForAll(galTable_T.AllItems,{Value:ThisRecord.Id}))
+                  OnUncheck: =Clear(colSelectedItems)
+                  Label: =""
+                  Width: =40
+        - lblTableHeaderId_T:
+            Control: Text
+            Properties:
+              Text: ="ID"
+              Weight: ='TextCanvas.Weight'.Semibold
+              Width: =50
+        - lblTableHeaderName_T:
+            Control: Text
+            Properties:
+              Text: ="Name"
+              Weight: ='TextCanvas.Weight'.Semibold
+              Width: =150
+        - lblTableHeaderDesc_T:
+            Control: Text
+            Properties:
+              Text: ="Description"
+              Weight: ='TextCanvas.Weight'.Semibold
+              FillPortions: =1
+        - lblTableHeaderCat_T:
+            Control: Text
+            Properties:
+              Align: ='TextCanvas.Align'.Center
+              Text: ="Category"
+              Weight: ='TextCanvas.Weight'.Semibold
+              Width: =200
+        - lblTableHeaderNum_T:
+            Control: Text
+            Properties:
+              Align: ='TextCanvas.Align'.End
+              Text: ="Number"
+              Weight: ='TextCanvas.Weight'.Semibold
+              Width: =80
+        - cntTableHeaderActions_T:
+            Control: GroupContainer
+            Variant: manualLayoutContainer
+            Properties:
+              DropShadow: =DropShadow.None
+              FillPortions: =0
+              LayoutMinHeight: =20
+              LayoutMinWidth: =50
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+              Width: =50
+    - galTable_T:
+        Control: Gallery
+        Variant: galleryVertical
+        Properties:
+          Items: |-
+            =// Sample Table
+            AddColumns(
+                ForAll(
+                    Sequence(
+                        40,
+                        1,
+                        1
+                    ),
+                    {
+                        Id: ThisRecord.Value,
+                        Name: $"Name {ThisRecord.Value}",
+                        Number: ThisRecord.Value * RandBetween(1,15),
+                        Description: $"Lorem ipsum {ThisRecord.Value} dolor sit amet, consectetur adipiscing elit. Morbi ultricies feugiat fermentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus"
+                    }
+                ),
+                Category,
+                If(
+                    Mod(
+                        ThisRecord.Number,
+                        2
+                    ) <> 0,
+                    "Uneven",
+                    "Even"
+                )
+            )
+          AlignInContainer: =AlignInContainer.SetByContainer
+          DelayItemLoading: =true
+          Layout: =Layout.Vertical
+          LoadingSpinner: =LoadingSpinner.Data
+          TemplateFill: =If(ThisItem.Id in colSelectedItems,ColorFade(RGBA(60,60,60,1),0.8),Color.Transparent)
+          TemplatePadding: =0
+          TemplateSize: '=50  '
+        Children:
+        - tlbItemActions_T:
+            Control: PowerApps_CoreControls_Toolbar
+            Variant: pcfdataset
+            Properties:
+              OnSelect: |-
+                =Switch(
+                    Self.Selected.ItemKey,
+                    "edit",
+                    ClearCollect(colSelectedItems,ThisItem.Id);
+                    UpdateContext(
+                        {
+                            locModalPanel:{
+                                Type:"panel",
+                                Code:"edit"
+                            }
+                        }
+                    ),
+                    "delete",
+                    ClearCollect(colSelectedItems,ThisItem.Id);
+                    UpdateContext(
+                        {
+                            locModalPanel:{
+                                Type:"modal",
+                                Code:"delete"
+                            }
+                        }
+                    )
+
+                )
+              Alignment: ='Toolbar.Alignment'.Horizontal
+              Items: |-
+                =Table(
+                    {
+                        ItemKey: "edit",
+                        ItemDisplayName: "Edit",
+                        ItemIconName: "Edit",
+                        ItemAppearance: "Subtle",
+                        ItemIconStyle: "Regular"
+                    },
+                    {
+                        ItemKey: "delete",
+                        ItemDisplayName: "Delete",
+                        ItemIconName: "Delete",
+                        ItemAppearance: "Subtle",
+                        ItemIconStyle: "Filled"
+                    }
+                )
+              Height: =Parent.TemplateHeight
+              Width: =cntTableHeaderActions_T.Width
+              X: =cntTableHeaderActions_T.X
+        - cntTableSelect_T:
+            Control: GroupContainer
+            Variant: manualLayoutContainer
+            Properties:
+              DropShadow: =DropShadow.None
+              Height: =Parent.TemplateHeight
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+              Width: =Parent.TemplateWidth
+              X: =ctnTableHeaderSelection_T.X
+            Children:
+            - btnItemSelect_T:
+                Control: Classic/Button
+                Properties:
+                  OnSelect: =ClearCollect(colSelectedItems,ThisItem.Id)
+                  Text: =""
+                  BorderThickness: =0
+                  DisabledFill: =Color.Transparent
+                  Fill: =Color.Transparent
+                  Height: =Parent.Height
+                  HoverFill: =RGBA(60, 60, 60, 0.1)
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =Parent.Width
+            - chkItemSelect_T:
+                Control: CheckBox
+                Properties:
+                  OnCheck: "=//Multi select\n    Collect(\n        colSelectedItems,\n        ThisItem.Id\n    )\n    \n//Single select\n/*\nClearCollect(\n    colSelectedItems,\n    ThisItem.Id\n)\n*/"
+                  OnUncheck: |-
+                    =If(
+                        ThisItem.Id in colSelectedItems,
+                        RemoveIf(colSelectedItems,Value = ThisItem.Id)
+                    )
+                  Checked: =ThisItem.Id in colSelectedItems
+                  Label: =""
+                  Height: =Parent.Height
+                  Width: =chkTableHeader_T.Width
+        - lblItemName_T:
+            Control: Text
+            Properties:
+              Text: =ThisItem.Name
+              VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+              Height: =50
+              Width: =lblTableHeaderName_T.Width
+              X: =lblTableHeaderName_T.X
+        - btnSelectRow_T:
+            Control: Classic/Button
+            Properties:
+              OnSelect: =Select(Parent)
+              Text: =""
+              DisabledFill: =Color.Transparent
+              Fill: =Color.Transparent
+              Height: =Parent.TemplateHeight
+              HoverFill: =RGBA(60, 60,60, 0.1)
+              Visible: =false
+              Width: =Parent.TemplateWidth
+        - bdgItemCat_T:
+            Control: Badge
+            Properties:
+              Content: =ThisItem.Category
+              Shape: ='BadgeCanvas.Shape'.Rounded
+              ThemeColor: =Switch(ThisItem.Category,"Even",'BadgeCanvas.ThemeColor'.Success,"Uneven",'BadgeCanvas.ThemeColor'.Danger)
+              Height: =25
+              Width: =80
+              X: =lblTableHeaderCat_T.X+(lblTableHeaderCat_T.Width - Self.Width)/2
+              Y: =(Parent.TemplateHeight - Self.Height) / 2
+        - lblItemNum_T:
+            Control: Text
+            Properties:
+              Align: ='TextCanvas.Align'.End
+              Text: =ThisItem.Number
+              VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+              Height: =Parent.TemplateHeight
+              Width: =lblTableHeaderNum_T.Width
+              X: =lblTableHeaderNum_T.X
+        - lblItemDesc_T:
+            Control: Text
+            Properties:
+              Text: =ThisItem.Description
+              VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+              Wrap: =false
+              Height: =Parent.TemplateHeight
+              Width: =lblTableHeaderDesc_T.Width
+              X: =lblTableHeaderDesc_T.X
+        - lblItemId_T:
+            Control: Text
+            Properties:
+              Text: =ThisItem.Id
+              VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+              Height: =Parent.TemplateHeight
+              Width: =lblTableHeaderId_T.Width
+              X: =lblTableHeaderId_T.X
+        - shpTableSeparator_T:
+            Control: Rectangle
+            Properties:
+              OnSelect: =Select(Parent)
+              Fill: =RGBA(219, 219, 219, 1)
+              Height: =1
+              Width: =Parent.TemplateWidth
+              Y: =Parent.TemplateHeight-Self.Height
