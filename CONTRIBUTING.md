@@ -16,7 +16,7 @@ Inside each code block folder, is structured the same way :
 2. You should always ensure that your fork is up-to-date with the upstream repository by regularly synchronizing your fork.
 The simplest way to synchronize your fork with the upstream repository is via the Fetch upstream feature on your fork github page
 3. Create your own branch. Your branch should be name as "{CodeBlockCode}/{ShortUpdateDescription}" (example: `GalleryTable/ColumnVisibility`)
-4. If you are submitting a new code block, you can copy the "SampleCodeBlock" folder to ensure you are following the expected folder organization. This Sample folder includes 
+4. If you are submitting a new code block, you can copy the "zz_SampleCodeBlock" folder to ensure you are following the expected folder organization. This Sample folder includes 
    1. `Assets` folder with the properly name global image inside.
    2. The properly named YAML file with Canvas Code. 
    3. `README` file with all required sections inside.
