@@ -1,0 +1,17 @@
+- cntSample_L:
+    Control: GroupContainer
+    Variant: verticalAutoLayoutContainer
+    Properties:
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutJustifyContent: =LayoutJustifyContent.Center
+      LayoutMode: =LayoutMode.Auto
+      Visible: =tabMenu.Selected.Value = "SampleCodeBlock"
+    Children:
+    - lblSample_L:
+        Control: Text
+        Properties:
+          Align: ='TextCanvas.Align'.Center
+          Size: =18
+          Text: ="Sample For Power Apps Canvas Code Library !"
+          Weight: ='TextCanvas.Weight'.Bold
