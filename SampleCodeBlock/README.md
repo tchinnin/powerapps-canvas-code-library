@@ -3,7 +3,7 @@
 ## Description
 *Complete description of the code block*
 ## Properties
-- [ ] Using modern controls
+- [x] Using modern controls
 - [ ] Using preview controls (as of *enter date*)
 ## Usage instructions
 *Detailed instruction of how to use the code block*
