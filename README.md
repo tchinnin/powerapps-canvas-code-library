@@ -10,10 +10,7 @@ Each code block has its own folder in this Repo. Within the folder you can find 
 - a **README file** with detailed description and usage instructions
 
 ## Canvas YAML code organization
-The provided YAML should always be :
-- Inside a layout container, to ease pasting and insertion experience inside an existing canvas.
-- Independant : 
-  - Not using any custom datasource
-  - Not using any canvas or code component
-  - Using sample data. Buttons could be added to run `Set()` or `ClearCollect()` function, creating Sample Data for Code block demonstration.
-- Respecting canvas [Naming convention]([https://](https://www.microsoft.com/en-us/power-platform/blog/power-apps/powerapps-canvas-app-coding-standards-and-guidelines/)) (Latest PDF version available at the end of the blog post)
+The code blocks should be inside Containers to ease the integration in your Canvas. 
+Buttons might be outside the Containers, as they would only be Sample buttons, used to simulate behavior properties in your apps and explaining behaviour formulas expected for the code to work.
+
+Comments might be added within the code block to help you with the configuration.

@@ -28,7 +28,8 @@ The provided YAML should always be :
 - Independant : 
   - Not using any custom datasource
   - Not using any canvas or code component
-  - Using sample data. Buttons could be added to run `Set()` or `ClearCollect()` functions, creating Sample Data for Code block demonstration.
-- Respecting canvas [Naming convention]([https://](https://www.microsoft.com/en-us/power-platform/blog/power-apps/powerapps-canvas-app-coding-standards-and-guidelines/)) (Latest PDF version available at the end of the blog post)
+  - Using sample data. Buttons could be added to run `Set()`, `ClearCollect()` or `UpdateContext()` functions, creating Sample Data for Code block demonstration.
+- Respecting canvas [Naming convention](https://www.microsoft.com/en-us/power-platform/blog/power-apps/powerapps-canvas-app-coding-standards-and-guidelines/) (Latest PDF version available at the end of the blog post)
+- Commented as much as possible to help makers to understand the logic and how/where to add their custom PowerFx formulas.
 
 **These rules will be verified when validating your Pull Request.**

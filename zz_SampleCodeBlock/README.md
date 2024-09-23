@@ -1,4 +1,4 @@
-# Gallery Table
+# Sample Code Block
 ![SampleCodeBlock](/zz_SampleCodeBlock/Assets/SampleCodeBlock.png)
 ## Description
 *Complete description of the code block*
