@@ -1,5 +1,5 @@
 # Gallery Table
-
+![Gallery Table Image](/GalleryTable/Asset/main.png)
 ## Description
 Use a Vertical Gallery styled as a table to display items in rows with :
 - Sticky header
