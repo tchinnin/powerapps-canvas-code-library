@@ -8,9 +8,8 @@ Use a Vertical Gallery styled as a table to display items in rows with :
 - Easy column management (order, size, visibility)
 
 ## Properties
-[x] Using modern controls
-
-[x] Using preview controls (as of 2024-09-03)
+- [x] Using modern controls
+- [x] Using preview controls (as of 2024-09-03)
 
 ## Usage instructions
 All the content inside the table (inside the Gallery) is positionned and visible according to its corresponding header in the "cntTableHeader_T" container.
