@@ -232,6 +232,7 @@
               Text: =ThisItem.Name
               VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
               Height: =50
+              Visible: =lblTableHeaderName_T.Visible
               Width: =lblTableHeaderName_T.Width
               X: =lblTableHeaderName_T.X
         - btnSelectRow_T:
@@ -252,6 +253,7 @@
               Shape: ='BadgeCanvas.Shape'.Rounded
               ThemeColor: =Switch(ThisItem.Category,"Even",'BadgeCanvas.ThemeColor'.Success,"Uneven",'BadgeCanvas.ThemeColor'.Danger)
               Height: =25
+              Visible: =lblTableHeaderCat_T.Visible
               Width: =80
               X: =lblTableHeaderCat_T.X+(lblTableHeaderCat_T.Width - Self.Width)/2
               Y: =(Parent.TemplateHeight - Self.Height) / 2
@@ -262,6 +264,7 @@
               Text: =ThisItem.Number
               VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
               Height: =Parent.TemplateHeight
+              Visible: =lblTableHeaderNum_T.Visible
               Width: =lblTableHeaderNum_T.Width
               X: =lblTableHeaderNum_T.X
         - lblItemDesc_T:
@@ -271,6 +274,7 @@
               VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
               Wrap: =false
               Height: =Parent.TemplateHeight
+              Visible: =lblTableHeaderDesc_T.Visible
               Width: =lblTableHeaderDesc_T.Width
               X: =lblTableHeaderDesc_T.X
         - lblItemId_T:
@@ -279,6 +283,7 @@
               Text: =ThisItem.Id
               VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
               Height: =Parent.TemplateHeight
+              Visible: =lblTableHeaderId_T.Visible
               Width: =lblTableHeaderId_T.Width
               X: =lblTableHeaderId_T.X
         - shpTableSeparator_T:
