@@ -20,7 +20,7 @@ The simplest way to synchronize your fork with the upstream repository is via th
    1. `Assets` folder with the properly name global image inside.
    2. The properly named YAML file with Canvas Code. 
    YAML is generated from Canvas Studio this way :
-   ![Copy YAML From Power Apps Canvas Studio](/Assets/copyYmlFromStudio.png)
+   ![Copy YAML From Power Apps Canvas Studio](/.github/Assets/copyYmlFromStudio.png)
    3. `README` file with all required sections inside.
 5. When your work is ready for submission, create a Pull Request from your branch in your own fork into the main branch in this repository. Each PR should include only updates for a single code block.
 
