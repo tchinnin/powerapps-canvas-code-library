@@ -1,5 +1,5 @@
 # Sample Code Block
-![SampleCodeBlock](/zz_SampleCodeBlock/Assets/SampleCodeBlock.png)
+![SampleCodeBlock](/code-blocks/zz-sample-code-block/assets/sample-code-block.png)
 ## Description
 *Complete description of the code block*
 ## Properties

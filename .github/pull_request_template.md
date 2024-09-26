@@ -1,5 +1,5 @@
 ## Checklist
-- [ ] My PR is about a single Code block (only 1 root folder updated)
+- [ ] My PR is about a single Code block (only 1 subfolder of "/code-bloks" updated)
 - [ ] My Canvas code respects Canvas [Naming convention](https://www.microsoft.com/en-us/power-platform/blog/power-apps/powerapps-canvas-app-coding-standards-and-guidelines/) (Latest PDF version available at the end of the blog post)
 - [ ] My Code block is encapsulated in a Container
 - [ ] My Code block is independent 
@@ -9,6 +9,8 @@
   
 ----------
 *The following part is required for New code block submission only*
+
+----------
 ## New Code block 
 *You are expeted to replace all the following {content} surrounded by curly brackets*
 ### Identification
