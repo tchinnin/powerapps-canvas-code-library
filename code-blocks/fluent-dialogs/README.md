@@ -1,5 +1,5 @@
 # Fluent Dialogs
-![Fluent Dialogs Image](/FluentDialogs/Assets/FluentDialogs.gif)
+![Fluent Dialogs Image](/code-blocks/fluent-dialogs/assets/fluent-dialogs.gif)
 ## Description
 Create a "Dialog" experience on your screen. Dialogs can be centered or left sided.
 ## Properties

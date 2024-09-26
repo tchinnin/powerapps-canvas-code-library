@@ -10,11 +10,11 @@ Each code block has its own folder in this Repo. Within the folder you can find 
 - a **README file** with detailed description and usage instructions
 
 ## How to use the code
-1. Navigate between the root folders of this repo to find the code you need.
+1. Navigate between subfolders inside "/code-blocks" folder of this repo to find the code you need.
 2. Open the yml file and copy its content
-![Copy YAML From GitHub Repo](/.github/Assets/copyYmlFromGitHub.png)
+![Copy YAML From GitHub Repo](/.github/assets/copyYmlFromGitHub.png)
 3. In Power Apps Canvas Studio, select the location where you want to copy the code (can be at the screen level, or at a container level), Open the menu, Open the Paste submenu, select Paste code :
-![Paste YAML in Canvas Studio](/.github/Assets/pasteYmlInStudio.png)
+![Paste YAML in Canvas Studio](/.github/assets/pasteYmlInStudio.png)
 
 ## Canvas YAML code organization
 The code blocks should be inside Containers to ease the integration in your Canvas. 

@@ -1,0 +1,18 @@
+{
+    "codeBlocks":[
+        {
+            "code":"gallery-table",
+            "displayName":"Gallery Table",
+            "description":"<p>Use a Vertical Gallery styled as a table to display items in rows with :\n- Sticky header\n- Row selection\n- Row action menu\n- Easy column management (order, size, visibility)</p>\n",
+            "isFullScreen":false,
+            "authorGitHubAccount":"tchinnin"
+        },
+        {
+            "code":"fluent-dialogs",
+            "displayName":"Fluent Dialogs",
+            "description":"Create a \"Dialog\" experience on your screen. Dialogs can be centered or left sided.",
+            "isFullScreen":false,
+            "authorGitHubAccount":"tchinnin"
+        }
+    ]
+}
