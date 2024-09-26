@@ -16,6 +16,7 @@
 ### Identification
 #### {DisplayName}
 {Provide a description of your code block}
+- [ ] This Code Block is an entire screen
 ### Maintenance & Evolutions
 - [x] I accept to get Issues for Bugs or Enhancement assigned to me
 - [ ] I accept external contribution to this block (PR will be assigned to me)

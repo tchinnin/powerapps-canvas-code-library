@@ -26,12 +26,12 @@ The simplest way to synchronize your fork with the upstream repository is via th
 
 ## Code quality
 The provided YAML should always be :
-- Inside a layout container, to ease pasting and insertion experience inside an existing canvas.
+- Inside a layout container, to ease pasting and insertion experience inside an existing canvas **OR** an entire screen.
 - Independant : 
   - Not using any custom datasource
   - Not using any canvas or code component
   - Using sample data. Buttons could be added to run `Set()`, `ClearCollect()` or `UpdateContext()` functions, creating Sample Data and/or trigger behaviors for Code block demonstration.
 - Respecting canvas [Naming convention](https://www.microsoft.com/en-us/power-platform/blog/power-apps/powerapps-canvas-app-coding-standards-and-guidelines/) (Latest PDF version available at the end of the blog post)
 - Commented as much as possible to help makers to understand the logic and how/where to add their custom PowerFx formulas.
-
+  
 **These rules will be verified when validating your Pull Request.**
