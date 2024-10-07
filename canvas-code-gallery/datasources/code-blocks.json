@@ -7,7 +7,7 @@
             "authorGitHubAccount":"tchinnin",
             "contributorsGitHubAccounts":[
             ],
-            "mainImageDirectLink":"https://raw.githubusercontent.com/tchinnin/powerapps-canvas-code-library/main/code-blocks/gallery-table/assets/gallery-table.png"
+            "mainImageDirectLink":"https://raw.githubusercontent.com/tchinnin/powerapps-canvas-code-library/main/yaml-snippets/gallery-table/assets/gallery-table.png"
         },
         {
             "code":"fluent-dialogs",
@@ -16,7 +16,7 @@
             "authorGitHubAccount":"tchinnin",
             "contributorsGitHubAccounts":[
             ],
-            "mainImageDirectLink":"https://raw.githubusercontent.com/tchinnin/powerapps-canvas-code-library/main/code-blocks/fluent-dialogs/assets/fluent-dialogs.gif"
+            "mainImageDirectLink":"https://raw.githubusercontent.com/tchinnin/powerapps-canvas-code-library/main/yaml-snippets/fluent-dialogs/assets/fluent-dialogs.gif"
         }
     ]
 }
