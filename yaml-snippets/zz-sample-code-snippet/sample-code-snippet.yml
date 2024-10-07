@@ -6,7 +6,6 @@
       LayoutDirection: =LayoutDirection.Vertical
       LayoutJustifyContent: =LayoutJustifyContent.Center
       LayoutMode: =LayoutMode.Auto
-      Visible: =tabMenu.Selected.Value = "SampleCodeBlock"
     Children:
     - lblSample_L:
         Control: Text
