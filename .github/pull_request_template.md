@@ -1,5 +1,5 @@
 ## Checklist
-- [ ] My PR is about a single Code snippet (only 1 subfolder of "/code-bloks" updated)
+- [ ] My PR is about a single Code snippet (only 1 subfolder of "/yaml-snippet" updated)
 - [ ] My Canvas code respects Canvas [Naming convention](https://www.microsoft.com/en-us/power-platform/blog/power-apps/powerapps-canvas-app-coding-standards-and-guidelines/) (Latest PDF version available at the end of the blog post)
 - [ ] My Code snippet is encapsulated in a Container
 - [ ] My Code snippet is independent 
