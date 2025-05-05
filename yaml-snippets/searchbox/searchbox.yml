@@ -1,0 +1,32 @@
+- cntSearchbox:
+    Control: GroupContainer@1.3.0
+    Variant: ManualLayout
+    Properties:
+      AlignInContainer: =AlignInContainer.SetByContainer
+      DropShadow: =DropShadow.None
+      FillPortions: =0
+      Height: =32
+      LayoutMinHeight: =20
+      RadiusBottomLeft: =0
+      RadiusBottomRight: =0
+      RadiusTopLeft: =0
+      RadiusTopRight: =0
+    Children:
+      - txtSearch:
+          Control: TextInput@0.0.54
+          Properties:
+            Appearance: ='TextInputCanvas.Appearance'.FilledDarker
+            Height: =Parent.Height
+            PaddingLeft: =icoSearch.X+icoSearch.Width
+            Placeholder: ="Search"
+            Type: ='TextInputCanvas.Type'.Search
+            Width: =Parent.Width
+      - icoSearch:
+          Control: Icon@0.0.7
+          Properties:
+            Height: =Parent.Height-10
+            Icon: ="Search"
+            IconColor: =ColorValue("#AAAAAA")
+            Width: =Self.Height
+            X: =Self.Y
+            Y: =(Parent.Height-Self.Height)/2
