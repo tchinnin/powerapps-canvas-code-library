@@ -16,7 +16,7 @@
 ### Identification
 #### {DisplayName}
 {Provide a description of your code snippet}
-- [ ] This Code Block is an entire screen
+- [ ] This YAML Snippet is an entire screen
 ### Maintenance & Evolutions
 - [x] I accept to get Issues for Bugs or Enhancement assigned to me
 - [ ] I accept external contribution to this snippet (PR will be assigned to me)

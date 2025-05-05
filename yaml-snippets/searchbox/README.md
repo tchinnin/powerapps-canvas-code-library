@@ -1,4 +1,4 @@
-# Sample Code Block
+# Sample YAML Snippet
 ![SearchBox](/yaml-snippets/searchbox/assets/searchbox.png)
 ## Description
 Fluent style search box, with search icon.

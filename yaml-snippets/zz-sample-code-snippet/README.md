@@ -1,4 +1,4 @@
-# Sample Code Block
+# Sample YAML Snippet
 ![SampleCodeSnippet](/yaml-snippets/zz-sample-code-snippet/assets/sample-code-snippet.png)
 ## Description
 *Complete description of the code snippet*
