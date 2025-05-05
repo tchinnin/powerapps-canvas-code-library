@@ -1,0 +1,36 @@
+- cntRoot_BP:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Properties:
+      Fill: =RGBA(250, 250, 250, 1)
+      Height: =Parent.Height
+      LayoutDirection: =LayoutDirection.Vertical
+      PaddingBottom: =20
+      PaddingLeft: =20
+      PaddingRight: =20
+      PaddingTop: =20
+      Width: =Parent.Width
+    Children:
+      - cntBody_BP:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.Semilight
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =15
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Width: =Parent.Width
+          Children:
+            - lblPageTitle:
+                Control: Text@0.0.51
+                Properties:
+                  Height: =40
+                  Size: =24
+                  Text: ="Page title"
+                  Weight: ='TextCanvas.Weight'.Semibold
