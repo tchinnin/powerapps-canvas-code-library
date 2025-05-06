@@ -1,16 +1,120 @@
-- cntSample_L:
-    Control: GroupContainer
-    Variant: verticalAutoLayoutContainer
+- cntRoot_BPT:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
     Properties:
-      LayoutAlignItems: =LayoutAlignItems.Stretch
+      Fill: =RGBA(250, 250, 250, 1)
+      Height: =Parent.Height
       LayoutDirection: =LayoutDirection.Vertical
-      LayoutJustifyContent: =LayoutJustifyContent.Center
-      LayoutMode: =LayoutMode.Auto
+      LayoutGap: =20
+      PaddingBottom: =20
+      PaddingLeft: =20
+      PaddingRight: =20
+      PaddingTop: =20
+      Width: =Parent.Width
     Children:
-    - lblSample_L:
-        Control: Text
-        Properties:
-          Align: ='TextCanvas.Align'.Center
-          Size: =18
-          Text: ="Sample For Power Apps Canvas Code Library !"
-          Weight: ='TextCanvas.Weight'.Bold
+      - cntHeader_BPT:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.Semilight
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =50
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutGap: =20
+            PaddingBottom: =5
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =5
+            Width: =Parent.Width
+          Children:
+            - lblPageTitle_BPT:
+                Control: Text@0.0.51
+                Properties:
+                  Height: =40
+                  Size: =24
+                  Text: ="Page Title"
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =400
+            - ctnHeaderActionsBPT:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =15
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  LayoutMinHeight: =30
+                  LayoutMinWidth: =50
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - icoFilter_BPT:
+                      Control: Icon@0.0.7
+                      Properties:
+                        Icon: ="Filter"
+                  - ddlFilter_BPT:
+                      Control: DropDown@0.0.45
+                      Properties:
+                        Items: =CustomGallerySample
+                        Width: =250
+                      Children:
+                        - SampleHeading1:
+                            Control: DropDownDataField@1.5.0
+                            Variant: textualColumn
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="SampleHeading"
+                              FieldName: ="SampleHeading"
+                              FieldType: ="s"
+                              Order: =1
+                  - cntSearchbox_BPT:
+                      Control: GroupContainer@1.3.0
+                      Variant: ManualLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =32
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =250
+                      Children:
+                        - txtSearch_BPT:
+                            Control: TextInput@0.0.54
+                            Properties:
+                              Appearance: ='TextInputCanvas.Appearance'.FilledDarker
+                              Height: =Parent.Height
+                              PaddingLeft: =icoSearch_BPT.X+icoSearch_BPT.Width
+                              Placeholder: ="Search"
+                              Type: ='TextInputCanvas.Type'.Search
+                              Width: =Parent.Width
+                        - icoSearch_BPT:
+                            Control: Icon@0.0.7
+                            Properties:
+                              Height: =Parent.Height-10
+                              Icon: ="Search"
+                              IconColor: =ColorValue("#AAAAAA")
+                              Width: =Self.Height
+                              X: =Self.Y
+                              Y: =(Parent.Height-Self.Height)/2
+      - cntBody_BPT:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.Semilight
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =20
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Width: =Parent.Width
