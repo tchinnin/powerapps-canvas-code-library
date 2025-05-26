@@ -1,6 +1,37 @@
+- btnOpenSide:
+    Control: Button@0.0.45
+    Properties:
+      OnSelect: |-
+        =UpdateContext(
+            {
+                locDialog: {
+                    Type: "side", //Type can be "center" or "side"
+                    Code: "Side_Dialog"//Code is a custom string for you to identify which modal to show
+                },
+                locDialogLoading:false
+            }
+        )
+      Text: ="Open Sided Dialog"
+      Width: =170
+      X: =btnOpenCenter.X + btnOpenCenter.Width + 20
+- btnOpenCenter:
+    Control: Button@0.0.45
+    Properties:
+      OnSelect: |-
+        =UpdateContext(
+            {
+                locDialog: {
+                    Type: "center", //Type can be "center" or "side"
+                    Code: "Center_Dialog"//Code is a custom string for you to identify which modal to show
+                },
+                locDialogLoading:false
+            }
+        )
+      Text: ="Open Centered Dialog"
+      Width: =170
 - cntDialog:
-    Control: GroupContainer
-    Variant: verticalAutoLayoutContainer
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
     Properties:
       DropShadow: =DropShadow.None
       Fill: =RGBA(255, 255, 255, 0.6)
@@ -13,7 +44,6 @@
         )
       LayoutDirection: =LayoutDirection.Vertical
       LayoutJustifyContent: =LayoutJustifyContent.Center
-      LayoutMode: =LayoutMode.Auto
       RadiusBottomLeft: =0
       RadiusBottomRight: =0
       RadiusTopLeft: =0
@@ -21,183 +51,253 @@
       Visible: =!IsBlank(locDialog)
       Width: =Parent.Width
     Children:
-    - cntCenteredDialog:
-        Control: GroupContainer
-        Variant: verticalAutoLayoutContainer
-        Properties:
-          AlignInContainer: =AlignInContainer.SetByContainer
-          DropShadow: =DropShadow.Semibold
-          Fill: =Color.White
-          FillPortions: =0
-          Height: =170
-          LayoutAlignItems: =LayoutAlignItems.Stretch
-          LayoutDirection: =LayoutDirection.Vertical
-          LayoutGap: =15
-          LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-          LayoutMode: =LayoutMode.Auto
-          PaddingBottom: =15
-          PaddingLeft: =15
-          PaddingRight: =15
-          PaddingTop: =15
-          Visible: =locDialog.Code = "Center_Dialog"
-        Children:
-        - cntCenteredDialogBody:
-            Control: GroupContainer
-            Variant: verticalAutoLayoutContainer
-            Properties:
-              AlignInContainer: =AlignInContainer.SetByContainer
-              DropShadow: =DropShadow.None
-              Height: =50
-              LayoutAlignItems: =LayoutAlignItems.Stretch
-              LayoutDirection: =LayoutDirection.Vertical
-              LayoutGap: =15
-              LayoutJustifyContent: =LayoutJustifyContent.Center
-              LayoutMinHeight: =50
-              LayoutMode: =LayoutMode.Auto
-              RadiusBottomLeft: =0
-              RadiusBottomRight: =0
-              RadiusTopLeft: =0
-              RadiusTopRight: =0
-            Children:
-            - lblCenteredDialogHeader:
-                Control: Text
+      - cntCenteredDialog:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Semibold
+            Fill: =Color.White
+            FillPortions: =0
+            Height: =180
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =15
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Visible: =locDialog.Code = "Center_Dialog"
+          Children:
+            - cntCenteredDialogHeader:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  Size: =16
-                  Text: ="Confirmation"
-                  Weight: ='TextCanvas.Weight'.Bold
-            - lblConfirmCentered:
-                Control: Text
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =32
+                  LayoutDirection: =LayoutDirection.Horizontal
+                Children:
+                  - lblCenteredDialogHeader:
+                      Control: Text@0.0.51
+                      Properties:
+                        FillPortions: =1
+                        Size: =16
+                        Text: ="Confirmation"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Bold
+                  - btnCenteredDialogClose:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Subtle
+                        Icon: ="Dismiss"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: =UpdateContext({locDialog:Blank()})
+                        Text: =
+                        Visible: =!locDialogLoading
+                        Width: =32
+            - cntCenteredDialogBody:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  Text: ="Do  you confirm ?"
-                  FillPortions: =1
-        - cntCenteredDialogActions:
-            Control: GroupContainer
-            Variant: verticalAutoLayoutContainer
-            Properties:
-              AlignInContainer: =AlignInContainer.SetByContainer
-              DropShadow: =DropShadow.None
-              FillPortions: =0
-              Height: =50
-              LayoutAlignItems: =LayoutAlignItems.Center
-              LayoutGap: =20
-              LayoutJustifyContent: =LayoutJustifyContent.End
-              LayoutMinHeight: =50
-              LayoutMode: =LayoutMode.Auto
-              RadiusBottomLeft: =0
-              RadiusBottomRight: =0
-              RadiusTopLeft: =0
-              RadiusTopRight: =0
-            Children:
-            - ctnCancelCentered:
-                Control: Button
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Height: =50
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =15
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMinHeight: =50
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =!locDialogLoading
+                Children:
+                  - lblConfirmCentered:
+                      Control: Text@0.0.51
+                      Properties:
+                        FillPortions: =1
+                        Text: ="Do  you confirm ?"
+            - cntCenteredDialogLoad:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  OnSelect: =UpdateContext({locDialog:Blank()})
-                  Appearance: ='ButtonCanvas.Appearance'.Secondary
-                  Text: ="Cancel"
-            - btnConfirmCentered:
-                Control: Button
+                  DropShadow: =DropShadow.None
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =15
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =locDialogLoading
+                Children:
+                  - spnCenteredDialogLoad:
+                      Control: Spinner@1.4.6
+                      Properties:
+                        FillPortions: =1
+                        Label: ="Doing something"
+                        LabelPosition: ='Spinner.LabelPosition'.Below
+                        LayoutMinHeight: =100
+                        SpinnerSize: ='Spinner.SpinnerSize'.ExtraLarge
+                        Visible: =locDialogLoading
+            - cntCenteredDialogActions:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  OnSelect: |-
-                    =// Add your custom logic before closing the dialog
-                    UpdateContext({locDialog:Blank()})
-                  Text: ="Confirm"
-    - cntSidedDialog:
-        Control: GroupContainer
-        Variant: verticalAutoLayoutContainer
-        Properties:
-          AlignInContainer: =AlignInContainer.SetByContainer
-          DropShadow: =DropShadow.Semibold
-          Fill: =Color.White
-          LayoutDirection: =LayoutDirection.Vertical
-          LayoutMode: =LayoutMode.Auto
-          Visible: =locDialog.Code = "Side_Dialog"
-        Children:
-        - cntSidedDialogBody:
-            Control: GroupContainer
-            Variant: verticalAutoLayoutContainer
-            Properties:
-              AlignInContainer: =AlignInContainer.SetByContainer
-              DropShadow: =DropShadow.None
-              LayoutAlignItems: =LayoutAlignItems.Stretch
-              LayoutDirection: =LayoutDirection.Vertical
-              LayoutGap: =15
-              LayoutMode: =LayoutMode.Auto
-              PaddingBottom: =15
-              PaddingLeft: =15
-              PaddingRight: =15
-              PaddingTop: =15
-              RadiusBottomLeft: =0
-              RadiusBottomRight: =0
-              RadiusTopLeft: =0
-              RadiusTopRight: =0
-            Children:
-            - lblSidedDialogHeader:
-                Control: Text
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =35
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  LayoutMinHeight: =50
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =!locDialogLoading
+                Children:
+                  - ctnCancelCentered:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Secondary
+                        OnSelect: =UpdateContext({locDialog:Blank()})
+                        Text: ="Cancel"
+                  - btnConfirmCentered:
+                      Control: Button@0.0.45
+                      Properties:
+                        OnSelect: |-
+                          =// Show Spinner
+                          UpdateContext({locDialogLoading: true});
+
+                          // Add your custom logic before closing the dialog
+                          UpdateContext(
+                              {
+                                  locDialog: Blank(),
+                                  locDialogLoading: false
+                              }
+                          )
+                        Text: ="Confirm"
+      - cntSidedDialog:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Semibold
+            Fill: =Color.White
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =15
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Visible: =locDialog.Code = "Side_Dialog"
+          Children:
+            - cntSidedDialogHeader:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  Size: =16
-                  Text: ="Title"
-                  Weight: ='TextCanvas.Weight'.Bold
-        - cntSidedDialogActions:
-            Control: GroupContainer
-            Variant: verticalAutoLayoutContainer
-            Properties:
-              AlignInContainer: =AlignInContainer.SetByContainer
-              DropShadow: =DropShadow.None
-              FillPortions: =0
-              Height: =50
-              LayoutAlignItems: =LayoutAlignItems.Center
-              LayoutGap: =20
-              LayoutJustifyContent: =LayoutJustifyContent.End
-              LayoutMinHeight: =50
-              LayoutMode: =LayoutMode.Auto
-              PaddingLeft: =20
-              PaddingRight: =20
-              RadiusBottomLeft: =0
-              RadiusBottomRight: =0
-              RadiusTopLeft: =0
-              RadiusTopRight: =0
-            Children:
-            - btnCancelSided:
-                Control: Button
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =32
+                  LayoutDirection: =LayoutDirection.Horizontal
+                Children:
+                  - lblSidedDialogHeader:
+                      Control: Text@0.0.51
+                      Properties:
+                        FillPortions: =1
+                        Size: =16
+                        Text: ="Title"
+                        Weight: ='TextCanvas.Weight'.Bold
+                  - btnSidedDialogClose:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Subtle
+                        Icon: ="Dismiss"
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        OnSelect: =UpdateContext({locDialog:Blank()})
+                        Text: =
+                        Visible: =!locDialogLoading
+                        Width: =32
+            - cntSidedDialogBody:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  OnSelect: =UpdateContext({locDialog:Blank()})
-                  Appearance: ='ButtonCanvas.Appearance'.Secondary
-                  Text: ="Cancel"
-            - btnConfirmSided:
-                Control: Button
+                  DropShadow: =DropShadow.None
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =15
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =!locDialogLoading
+            - cntSidedDialogLoad:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
                 Properties:
-                  OnSelect: |-
-                    =// Add your custom logic before closing the dialog
-                    UpdateContext({locDialog:Blank()})
-                  Text: ="Confirm"
-- btnOpenCenter:
-    Control: Button
-    Properties:
-      OnSelect: |-
-        =UpdateContext(
-            {
-                locDialog: {
-                    Type: "center", //Type can be "center" or "side"
-                    Code: "Center_Dialog"//Code is a custom string for you to identify which modal to show
-                }
-            }
-        )
-      Text: ="Open Centered Dialog"
-      Width: =170
-      Y: =- Self.Height
-- btnOpenSide:
-    Control: Button
-    Properties:
-      OnSelect: |-
-        =UpdateContext(
-            {
-                locDialog: {
-                    Type: "side", //Type can be "center" or "side"
-                    Code: "Side_Dialog"//Code is a custom string for you to identify which modal to show
-                }
-            }
-        )
-      Text: ="Open Sided Dialog"
-      Width: =170
-      X: =btnOpenCenter.X + btnOpenCenter.Width + 20
-      Y: =- Self.Height
+                  DropShadow: =DropShadow.None
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =15
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =locDialogLoading
+                Children:
+                  - spnSidedDialogLoad:
+                      Control: Spinner@1.4.6
+                      Properties:
+                        FillPortions: =1
+                        Label: ="Doing something"
+                        LabelPosition: ='Spinner.LabelPosition'.Below
+                        LayoutMinHeight: =100
+                        SpinnerSize: ='Spinner.SpinnerSize'.ExtraLarge
+                        Visible: =locDialogLoading
+            - cntSidedDialogActions:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =35
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  LayoutMinHeight: =50
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =!locDialogLoading
+                Children:
+                  - btnCancelSided:
+                      Control: Button@0.0.45
+                      Properties:
+                        Appearance: ='ButtonCanvas.Appearance'.Secondary
+                        OnSelect: =UpdateContext({locDialog:Blank()})
+                        Text: ="Cancel"
+                  - btnConfirmSided:
+                      Control: Button@0.0.45
+                      Properties:
+                        OnSelect: |-
+                          =// Show Spinner
+                          UpdateContext({locDialogLoading: true});
+
+                          // Add your custom logic before closing the dialog
+                          UpdateContext(
+                              {
+                                  locDialog: Blank(),
+                                  locDialogLoading: false
+                              }
+                          )
+                        Text: ="Confirm"
