@@ -1,0 +1,172 @@
+- galSteps:
+    Control: Gallery@2.15.0
+    Variant: Horizontal
+    Properties:
+      AlignInContainer: =AlignInContainer.Center
+      BorderColor: =RGBA(166, 166, 166, 1)
+      FillPortions: =0
+      FocusedBorderColor: =RGBA(0, 120, 212, 1)
+      FocusedBorderThickness: =2
+      Height: =90
+      Items: =nfSteps
+      TemplatePadding: =0
+      TemplateSize: =170
+      Width: =Min(Self.TemplateWidth * Self.AllItemsCount,Parent.Width)
+    Children:
+      - cntStep:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Height: =Parent.TemplateHeight
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.TemplateWidth
+          Children:
+            - cntStepVisual:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  DropShadow: =DropShadow.None
+                  Height: =0
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMinHeight: =20
+                  LayoutMinWidth: =20
+                  PaddingBottom: =20
+                  PaddingTop: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Width: =0
+                Children:
+                  - cntLeftSeparator:
+                      Control: GroupContainer@1.3.0
+                      Variant: ManualLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: |-
+                          =If(
+                              ThisItem.Order <= Min(nfSteps, Order),
+                              Color.Transparent,
+                              ThisItem.Order <= glbCurrentStepOrder,
+                              App.Theme.Colors.Primary,
+                              RGBA(240,240,240,1)
+                          )
+                        Height: =4
+                        LayoutMinWidth: =10
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =10
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =10
+                  - cntStepIcon:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        BorderColor: =RGBA(240, 240, 240, 1)
+                        BorderThickness: |-
+                          =If(
+                              ThisItem.Order > glbCurrentStepOrder,
+                              2,
+                              0
+                          )
+                        DropShadow: =DropShadow.Semilight
+                        Fill: |-
+                          =If(
+                              ThisItem.Order < glbCurrentStepOrder,
+                              App.Theme.Colors.Primary,
+                              ThisItem.Order = glbCurrentStepOrder,
+                              App.Theme.Colors.Primary, //Change it to a different color if you want to highlight the current step with a different color
+                              Color.White
+                          )
+                        FillPortions: =0
+                        Height: =40
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =40
+                        RadiusBottomLeft: =1000
+                        RadiusBottomRight: =1000
+                        RadiusTopLeft: =1000
+                        RadiusTopRight: =1000
+                        Width: =40
+                      Children:
+                        - lblStepNumber:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              FillPortions: =1
+                              FontColor: |-
+                                =/*
+                                If(
+                                    ThisItem.Order <= glbCurrentStepOrder,
+                                    Color.White,
+                                    Color.Black
+                                )
+                                */
+                                If(
+                                    ThisItem.Order < glbCurrentStepOrder,
+                                    Color.White,
+                                    Color.Black
+                                )
+                              LayoutMinHeight: =20
+                              LayoutMinWidth: =20
+                              Text: =ThisItem.Order
+                              VerticalAlign: =VerticalAlign.Middle
+                              Visible: =ThisItem.Order >= glbCurrentStepOrder
+                              Weight: |-
+                                =If(
+                                    ThisItem.Order = glbCurrentStepOrder,
+                                    'TextCanvas.Weight'.Bold,
+                                    'TextCanvas.Weight'.Regular
+                                )
+                        - icoStepCheck:
+                            Control: Icon@0.0.7
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Height: =25
+                              Icon: ="Checkmark"
+                              IconColor: =RGBA(255, 255, 255, 1)
+                              LayoutMinHeight: =10
+                              LayoutMinWidth: =10
+                              Visible: =ThisItem.Order < glbCurrentStepOrder
+                              Width: =25
+                  - cntRightSeparator:
+                      Control: GroupContainer@1.3.0
+                      Variant: ManualLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        DropShadow: =DropShadow.None
+                        Fill: |-
+                          =If(
+                              ThisItem.Order >= Max(nfSteps, Order),
+                              Color.Transparent,
+                              ThisItem.Order >= glbCurrentStepOrder,
+                              RGBA(240,240,240,1),
+                              ThisItem.Order < glbCurrentStepOrder,
+                              App.Theme.Colors.Primary
+                          )
+                        Height: =4
+                        LayoutMinWidth: =10
+                        RadiusBottomLeft: =10
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =10
+                        RadiusTopRight: =0
+            - lblStepName:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  Size: =12
+                  Text: =ThisItem.Label
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: =If(ThisItem.Order = glbCurrentStepOrder,'TextCanvas.Weight'.Bold,'TextCanvas.Weight'.Regular)
